@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_DB: "kafkaDB"
+      POSTGRES_USER: "olegKafka"
+      POSTGRES_PASSWORD: "olegKafka"
+    ports:
+      - 5432:5432
+
+  rabbitmq:
+    image: rabbitmq:3.10.7-management
+    hostname: rabbitmq
+    restart: always
+    environment:
+      - RABBITMQ_DEFAULT_USER=olegRabbit
+      - RABBITMQ_DEFAULT_PASS=olegRabbit
+    ports:
+      - 15672:15672
+      - 5672:5672
